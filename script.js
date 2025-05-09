@@ -5,6 +5,8 @@ const categoria = document.getElementById("categoria");
 const preco = document.getElementById("preco");
 const quantidade = document.getElementById("quantidade");
 const imagem = document.getElementById("imagem");
+const produtoform = document.getElementById("produto-form");
+const notificacao = document.getElementById('notificacao-conteudo');
 
 //Listas para armazenar os dados do formulário
 
@@ -17,7 +19,8 @@ const produtos = [];
 
 /*********Caminho para adicionar um evento*********/
 
-const produtoform = document.getElementById("produto-form");
+
+notificacao.style.display = 'none';
 
 
 /*********Criando uma função*********/
@@ -34,6 +37,44 @@ const produtoform = document.getElementById("produto-form");
 /*a função é passada dentro do parâmetro do addEventListener()*/
 
 
+// Criando função para alterar a notificação exibida no topo da página
+
+function exibirNotificacao(mensagem, status)
+{
+
+const messageE1 = document.getElementById('notificacao-mensagem');
+
+messageE1.textContent = mensagem;
+
+    if (status === 'sucesso') {
+        notificacao.style.backgroundColor = '#b7d5ac';
+        messageE1.style.color = '#103900';
+    }
+    else if(status === 'alerta')
+    {
+        notificacao.style.backgroundColor = '#ffffa0';
+        messageE1.style.color = '#646600';
+    }
+    else if(status === 'erro')
+    {
+        notificacao.style.backgroundColor = '#fb6866';
+        messageE1.style.color = '#470300';
+    }
+
+    notificacao.style.display = 'block';
+
+
+    // Esconde a notificação depois de 3 segundos
+    setTimeout(() => {
+        
+        notificacao.style.display = 'none';
+
+    }, 3000);
+
+}
+
+
+
 /*********Criando evento de envio via arrowfunction*********/
 
 produtoform.addEventListener("submit", (event) => {
@@ -43,7 +84,7 @@ produtoform.addEventListener("submit", (event) => {
 
     if(nome.value == ''){
         document.getElementById("erro-nome").style.display = 'block';
-        camposPreenchidos = false;        
+        camposPreenchidos = false;                      
     }
     else{
         document.getElementById("erro-nome").style.display = 'none';
@@ -68,22 +109,14 @@ produtoform.addEventListener("submit", (event) => {
     }
     else{
         document.getElementById('erro-quantidade').style.display = 'none';
-    }
-
-    // nomes = ["Giovanne", "Débora", "Raimundo"];
-
-    // localStorage.setItem("nome", nomes); //Adiciona um item no localStorage
-
-    // // localStorage.removeItem("nome2"); para excluir um item do localStorage
-    
-    // const verNomes = localStorage.getItem("nome"); // Ver o que está armazenado no localStorage
-
-    // alert(verNomes);
+    }   
 
     if(camposPreenchidos == false){
+        exibirNotificacao("Preencha os campos!","erro");
         return
     }
 
+    exibirNotificacao("Produto adicionado com sucesso!","sucesso");
 
     const produtoInserido = {
         nome: nome.value,
@@ -93,6 +126,7 @@ produtoform.addEventListener("submit", (event) => {
         imagem: imagem.value
 
     }
+    
 
     // const novoProduto = nome.value;
 
@@ -112,6 +146,17 @@ produtoform.addEventListener("submit", (event) => {
 
     // localStorage.setItem("quantidade", quantidade.value);
 
+    // nomes = ["Giovanne", "Débora", "Raimundo"];
+
+    // localStorage.setItem("nome", nomes); //Adiciona um item no localStorage
+
+    // // localStorage.removeItem("nome2"); para excluir um item do localStorage
+    
+    // const verNomes = localStorage.getItem("nome"); // Ver o que está armazenado no localStorage
+
+    // alert(verNomes);
+
+   
 });
 
 
