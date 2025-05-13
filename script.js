@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*********Linkando Variáveis do HTML no JS via ID*********/
 
 const nome = document.getElementById("nome");
