@@ -114,9 +114,7 @@ produtoform.addEventListener("submit", (event) => {
     if(camposPreenchidos == false){
         exibirNotificacao("Preencha os campos!","erro");
         return
-    }
-
-    exibirNotificacao("Produto adicionado com sucesso!","sucesso");
+    }    
 
     const produtoInserido = {
         nome: nome.value,
@@ -140,6 +138,8 @@ produtoform.addEventListener("submit", (event) => {
 
     localStorage.setItem("nomeProduto", JSON.stringify(produtos));
     
+    exibirNotificacao("Produto adicionado com sucesso!","sucesso");
+
     // localStorage.setItem("nomeCategoria", categorias);
 
     // localStorage.setItem("preco", preco.value);
