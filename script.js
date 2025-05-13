@@ -7,6 +7,7 @@ const quantidade = document.getElementById("quantidade");
 const imagem = document.getElementById("imagem");
 const produtoform = document.getElementById("produto-form");
 const notificacao = document.getElementById('notificacao-conteudo');
+const tbody = document.getElementById('produtos-lista');
 
 //Listas para armazenar os dados do formulário
 
@@ -74,11 +75,7 @@ messageE1.textContent = mensagem;
 }
 
 
-
-/*********Criando evento de envio via arrowfunction*********/
-
-produtoform.addEventListener("submit", (event) => {
-    event.preventDefault();
+function verificaCampos() {
 
     let camposPreenchidos = true;
 
@@ -114,7 +111,18 @@ produtoform.addEventListener("submit", (event) => {
     if(camposPreenchidos == false){
         exibirNotificacao("Preencha os campos!","erro");
         return
-    }    
+    } 
+    exibirNotificacao("Produto adicionado com sucesso!","sucesso");
+}
+
+
+
+/*********Criando evento de envio via arrowfunction*********/
+
+produtoform.addEventListener("submit", (event) => {
+    event.preventDefault();  
+    
+    verificaCampos();
 
     const produtoInserido = {
         nome: nome.value,
@@ -125,7 +133,6 @@ produtoform.addEventListener("submit", (event) => {
 
     }
     
-
     // const novoProduto = nome.value;
 
     // const novaCategoria = categoria.value;
@@ -133,12 +140,13 @@ produtoform.addEventListener("submit", (event) => {
     // categorias.push(novaCategoria);
     // produtos.push(novoProduto);
 
-    produtos.push(produtoInserido);
+    let produtosSalvos = localStorage.getItem('nomeProduto') || []
+   
+    //pegando os produtos que já foram salvos no localstorage
+    produtosSalvos.push(produtoInserido);
 
-
-    localStorage.setItem("nomeProduto", JSON.stringify(produtos));
-    
-    exibirNotificacao("Produto adicionado com sucesso!","sucesso");
+    localStorage.setItem("nomeProduto", JSON.stringify(produtosSalvos));
+       
 
     // localStorage.setItem("nomeCategoria", categorias);
 
@@ -158,3 +166,33 @@ produtoform.addEventListener("submit", (event) => {
 
    
 });
+
+
+
+
+function adicionarItemTabela() {
+
+    let produto = localStorage.getItem(('nomeProduto')) || [];
+    
+    produto = JSON.parse("nomeProduto");
+   
+    produtos.forEach(produto =>{
+        console.log(produto);
+        valoresTabela += `
+        <tr>
+                <td></td>
+                <td>${produto[0].nome}</td>
+                <td>${produto[0].categoria}</td>
+                <td>${produto[0].preco}</td>
+                <td>${produto[0].quantidade}</td> 
+        </tr>
+            `;
+
+    });
+     
+
+    tbody.innerHTML = valoresTabela
+    
+};
+
+
