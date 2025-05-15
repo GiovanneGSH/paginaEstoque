@@ -1,11 +1,11 @@
 /*********Linkando Variáveis do HTML no JS via ID*********/
 
-const nome = document.getElementById("nome");
-const categoria = document.getElementById("categoria");
-const preco = document.getElementById("preco");
-const quantidade = document.getElementById("quantidade");
-const imagem = document.getElementById("imagem");
-const produtoform = document.getElementById("produto-form");
+const nome = document.getElementById('nome');
+const categoria = document.getElementById('categoria');
+const preco = document.getElementById('preco');
+const quantidade = document.getElementById('quantidade');
+const imagem = document.getElementById('imagem');
+const produtoform = document.getElementById('produto-form');
 const notificacao = document.getElementById('notificacao-conteudo');
 const tbody = document.getElementById('produtos-lista');
 
@@ -64,7 +64,6 @@ messageE1.textContent = mensagem;
 
     notificacao.style.display = 'block';
 
-
     // Esconde a notificação depois de 3 segundos
     setTimeout(() => {
         
@@ -74,57 +73,96 @@ messageE1.textContent = mensagem;
 
 }
 
+let contador = 0;
 
-function verificaCampos() {
+function verificaCampos() {  
+    
+    let contador = 0;
 
     let camposPreenchidos = true;
 
     if(nome.value == ''){
-        document.getElementById("erro-nome").style.display = 'block';
-        camposPreenchidos = false;                      
+        document.getElementById('erro-nome').style.display = 'block';
+        camposPreenchidos = false;
     }
     else{
-        document.getElementById("erro-nome").style.display = 'none';
+        document.getElementById('erro-nome').style.display = 'none';
+        contador++;
     }
     if(categoria.value == ''){
-        document.getElementById("erro-categoria").style.display = 'block';
-        camposPreenchidos = false; 
+        document.getElementById('erro-categoria').style.display = 'block';
+        camposPreenchidos = false;   
     }
     else{
         document.getElementById('erro-categoria').style.display = 'none';
+        contador++;
     }
     if(preco.value == '') {
         document.getElementById('erro-preco').style.display = 'block';
-        camposPreenchidos = false; 
+        camposPreenchidos = false;    
     }
     else{
         document.getElementById('erro-preco').style.display = 'none';
+        contador++;
     }
-    if(quantidade.value == ''){
+    if(quantidade.value == '' || quantidade.value == 0){
         document.getElementById('erro-quantidade').style.display = 'block';
-        camposPreenchidos = false; 
+        camposPreenchidos = false;  
     }
     else{
         document.getElementById('erro-quantidade').style.display = 'none';
-    }   
+        contador++;
+    } 
 
     if(camposPreenchidos == false){
-        exibirNotificacao("Preencha os campos!","erro");
         return
     } 
-    exibirNotificacao("Produto adicionado com sucesso!","sucesso");
-}
 
+    exibirNotificacao('Produto adicionado com sucesso!','sucesso');
+
+    // if (contador == 4) {
+
+    //     camposPreenchidos = false;
+
+    //     exibirNotificacao('Nenhum produto adicionado, preencha todos os campos!','erro');
+    // }
+    // else if(contador > 0 && contador < 4){
+    //     exibirNotificacao('Ainda faltam campos a serem preenchidos!','alerta');
+    // }
+
+    // else{
+    //     exibirNotificacao('Produto adicionado com sucesso!','sucesso');
+    // }    
+       
+    return camposPreenchidos;
+    
+}
 
 
 /*********Criando evento de envio via arrowfunction*********/
 
-produtoform.addEventListener("submit", (event) => {
+produtoform.addEventListener('submit', (event) => {
+
+    // produtoform.addEventListener('submit', (EVENT) => {
+
+    //impedir de recarregar a página quando o evento de submit(envio) for chamado
+
     event.preventDefault();  
     
-    verificaCampos();
+    if (verificaCampos() == false && contador == 0) {
+
+        exibirNotificacao('Nenhum produto adicionado, preencha todos os campos!','erro');
+
+        return;
+    }     
+    else if (verificaCampos() == false && contador < 4) {
+        exibirNotificacao('Ainda faltam alguns campos a serem preenchidos!','alerta');
+    }
+
+    exibirNotificacao('Produto adicionado com sucesso!','sucesso');
 
     const produtoInserido = {
+
         nome: nome.value,
         categoria: categoria.value,
         preco: preco.value,
@@ -140,13 +178,16 @@ produtoform.addEventListener("submit", (event) => {
     // categorias.push(novaCategoria);
     // produtos.push(novoProduto);
 
-    let produtosSalvos = localStorage.getItem('nomeProduto') || []
+    //pegando dos produtos que já foram salvos no localstorage
+    let produtosSalvos = JSON.parse(localStorage.getItem('nomeProduto')) || []
    
-    //pegando os produtos que já foram salvos no localstorage
+    //aguardando esses dados novos na lista
     produtosSalvos.push(produtoInserido);
 
-    localStorage.setItem("nomeProduto", JSON.stringify(produtosSalvos));
-       
+    //guardando a lista no localstorage, transformando os dados para 
+    // json usando o JSON.stringify
+
+    localStorage.setItem('nomeProduto', JSON.stringify(produtosSalvos));     
 
     // localStorage.setItem("nomeCategoria", categorias);
 
@@ -164,28 +205,38 @@ produtoform.addEventListener("submit", (event) => {
 
     // alert(verNomes);
 
+    //limpando os campos do formulário
+    produtoform.reset();
+
+    adicionarItemTabela();
    
 });
 
 
-
-
 function adicionarItemTabela() {
 
-    let produto = localStorage.getItem(('nomeProduto')) || [];
+    const semProdutosDiv = document.getElementById('sem-produtos');
+
+    let produtos = JSON.parse(localStorage.getItem('nomeProduto')) || [];
     
-    produto = JSON.parse("nomeProduto");
+    let valoresTabela = '';
+
+    if (produtos.length > 0) {
+
+        semProdutosDiv.style.display = 'none';
+        
+    }
    
-    produtos.forEach(produto =>{
+    produtos.forEach(produto => {
         console.log(produto);
         valoresTabela += `
-        <tr>
+            <tr>
                 <td></td>
-                <td>${produto[0].nome}</td>
-                <td>${produto[0].categoria}</td>
-                <td>${produto[0].preco}</td>
-                <td>${produto[0].quantidade}</td> 
-        </tr>
+                <td>${produto.nome}</td>
+                <td>${produto.categoria}</td>
+                <td>${produto.preco}</td>
+                <td>${produto.quantidade}</td> 
+            </tr>
             `;
 
     });
@@ -194,5 +245,7 @@ function adicionarItemTabela() {
     tbody.innerHTML = valoresTabela
     
 };
+
+adicionarItemTabela();
 
 
