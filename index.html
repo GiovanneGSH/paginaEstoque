@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pt-BR">
+=======
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="pt-br">
+
+>>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +37,11 @@
                     <p id="total-produtos">0</p>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="card total-itens">
+=======
+            <div class=" card total-itens">
+>>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
                 <i class="fas fa-cubes"></i>
                 <div class="info">
                     <h3>Total em Estoque</h3>
@@ -41,7 +52,11 @@
                 <i class="fas fa-money-bill-wave"></i>
                 <div class="info">
                     <h3>Valor Total</h3>
+<<<<<<< HEAD
                     <p id="valor-total">R$ 0,00</p>
+=======
+                    <p id="valor-total">R$0,00</p>
+>>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
                 </div>
             </div>
             <div class="card estoque-baixo">
@@ -52,13 +67,17 @@
                 </div>
             </div>
         </section>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
         <section class="formulario-container">
             <div class="formulario">
                 <h2>Adicionar Novo Produto</h2>
                 <form id="produto-form">
                     <div class="form-group">
                         <label for="nome">Nome do Produto <span class="campo-obrigatorio">*</span></label>
+<<<<<<< HEAD
                         <input 
                             type="text" 
                             id="nome" 
@@ -69,6 +88,13 @@
                     </div>
                     <div class="form-group">
                         <label for="categoria">Categoria <span class="campo-obrigatorio">*</span></label>
+=======
+                        <input type="text" id="nome" placeholder="Digite o nome do produto" >
+                        <span class="erro-mensagem" id="erro-nome">Este campo é obrigatório</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoria<span class="campo-obrigatorio">*</span></label>
+>>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
                         <select id="categoria" >
                             <option value="">Selecione uma categoria</option>
                             <option value="Eletrônicos">Eletrônicos</option>
@@ -83,17 +109,27 @@
                         <div class="form-group">
                             <label for="preco">Preço (R$) <span class="campo-obrigatorio">*</span></label>
                             <input 
+<<<<<<< HEAD
                                 type="number" 
                                 id="preco" 
                                 min="0" 
                                 step="0.01"
                                 placeholder="0,00"
                                 
+=======
+                            type="number" 
+                            id="preco" 
+                            min="0" 
+                            step="0.01"
+                            placeholder="0,00"
+                            
+>>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
                             >
                             <span class="erro-mensagem" id="erro-preco">Este campo é obrigatório</span>
                         </div>
                         <div class="form-group">
                             <label for="quantidade">Quantidade <span class="campo-obrigatorio">*</span></label>
+<<<<<<< HEAD
                             <input 
                                 type="number"
                                 id="quantidade"
@@ -102,10 +138,14 @@
                                 placeholder="0"
                                 
                             >
+=======
+                            <input type="number" id="quantidade" min="0" step="1" placeholder="0" >
+>>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
                             <span class="erro-mensagem" id="erro-quantidade">Este campo é obrigatório</span>
                         </div>
                     </div>
                     <div class="form-group">
+<<<<<<< HEAD
                         <label for="imagem">URL da Imagem</label>
                         <input 
                             type="text" 
@@ -148,4 +188,142 @@
     </main>
 </body>
 <script src="./script.js"></script>
+=======
+                        <label for="imagem">URL da imagem</label>
+                        <input type="text" id="imagem" placeholder="https://exemplo.com/imagem.jpg">
+                    </div>
+                    <button type="submit" class="btn-adicionar">
+                        <i class="fas fa-plus"></i> Adicionar Produto
+                    </button>
+                </form>
+            </div>
+            <div class="imagem-decorativa">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/2821/2821739.png" alt="Ilustração Inventário">
+
+            </div>
+        </section>
+    </main>
+</body>
+
+<script src="./script.js"></script>
+
+=======
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/4129/4129528.png" alt="Logo Estoque">
+            <h1>Estoque</h1>
+        </div>
+        <p class="slogan">Gerencie seu estoque com facilidade</p>
+    </header>
+    <div id="notificacao">
+        <div class="notificacao-conteudo">
+            <i class="fas fa-check-circle"></i>
+            <span id="notificacao-mensagem">Operação realizada com sucesso!</span>
+        </div>
+    </div>
+    <main>
+        <section class="dashboard">
+            <div class="card total-produtos">
+                <i class="fas fa-box"></i>
+                <div class="info">
+                    <h3>Total de Produtos</h3>
+                    <p id="total-produtos">0</p>
+                </div>
+            </div>
+            <div class=" card total-itens">
+                <i class="fas fa-cubes"></i>
+                <div class="info">
+                    <h3>Total em Estoque</h3>
+                    <p id="total-itens">0</p>
+                </div>
+            </div>
+            <div class="card valor-total">
+                <i class="fas fa-money-bill-wave"></i>
+                <div class="info">
+                    <h3>Valor Total</h3>
+                    <p id="valor-total">R$0,00</p>
+                </div>
+            </div>
+            <div class="card estoque-baixo">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div class="info">
+                    <h3>Estoque Baixo</h3>
+                    <p id="estoque-baixo">0</p>
+                </div>
+            </div>
+        </section>
+        <section class="formulario-container">
+            <div class="formulario">
+                <h2>Adicionar Novo Produto</h2>
+                <form id="produto-form">
+                    <div class="form-group">
+                        <label for="nome">Nome do Produto <span class="campo-obrigatorio">*</span></label>
+                        <input type="text" id="nome" placeholder="Digite o nome do produto" >
+                        <span class="erro-mensagem" id="erro-nome">Este campo é obrigatório</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoria<span class="campo-obrigatorio">*</span></label>
+                        <select id="categoria" >
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Eletrônicos">Eletrônicos</option>
+                            <option value="Móveis">Móveis</option>
+                            <option value="Roupas">Roupas</option>
+                            <option value="Alimentos">Alimentos</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                        <span class="erro-mensagem" id="erro-categoria">Este campo é obrigatório</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="preco">Preço (R$) <span class="campo-obrigatorio">*</span></label>
+                            <input 
+                            type="number" 
+                            id="preco" 
+                            min="0" 
+                            step="0.01"
+                            placeholder="0,00"
+                            
+                            >
+                            <span class="erro-mensagem" id="erro-preco">Este campo é obrigatório</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantidade">Quantidade <span class="campo-obrigatorio">*</span></label>
+                            <input type="number" id="quantidade" min="0" step="1" placeholder="0" >
+                            <span class="erro-mensagem" id="erro-quantidade">Este campo é obrigatório</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="imagem">URL da imagem</label>
+                        <input type="text" id="imagem" placeholder="https://exemplo.com/imagem.jpg">
+                    </div>
+                    <button type="submit" class="btn-adicionar">
+                        <i class="fas fa-plus"></i> Adicionar Produto
+                    </button>
+                </form>
+            </div>
+            <div class="imagem-decorativa">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/2821/2821739.png" alt="ilustração inventário">
+
+            </div>
+        </section>
+    </main>
+</body>
+
+<script src="./script.js"></script>
+
+>>>>>>> 127fb22a599af7bc5a3d974d8ef9b10ccaa29503
+>>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
 </html>
