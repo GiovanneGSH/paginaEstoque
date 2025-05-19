@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*********Linkando Variáveis do HTML no JS via ID*********/
 
 const nome = document.getElementById('nome');
@@ -9,18 +8,6 @@ const imagem = document.getElementById('imagem');
 const produtoform = document.getElementById('produto-form');
 const notificacao = document.getElementById('notificacao-conteudo');
 const tbody = document.getElementById('produtos-lista');
-=======
-<<<<<<< HEAD
-/*********Linkando Variáveis do HTML no JS via ID*********/
-
-const nome = document.getElementById("nome");
-const categoria = document.getElementById("categoria");
-const preco = document.getElementById("preco");
-const quantidade = document.getElementById("quantidade");
-const imagem = document.getElementById("imagem");
-const produtoform = document.getElementById("produto-form");
-const notificacao = document.getElementById('notificacao-conteudo');
->>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
 
 //Listas para armazenar os dados do formulário
 
@@ -77,10 +64,7 @@ messageE1.textContent = mensagem;
 
     notificacao.style.display = 'block';
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
     // Esconde a notificação depois de 3 segundos
     setTimeout(() => {
         
@@ -90,7 +74,7 @@ messageE1.textContent = mensagem;
 
 }
 
-<<<<<<< HEAD
+
 let contador = 0;
 
 function verificaCampos() {  
@@ -155,13 +139,12 @@ function verificaCampos() {
     return camposPreenchidos;
     
 }
-=======
->>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
+
 
 
 /*********Criando evento de envio via arrowfunction*********/
 
-<<<<<<< HEAD
+
 produtoform.addEventListener('submit', (event) => {
 
     // produtoform.addEventListener('submit', (EVENT) => {
@@ -184,7 +167,7 @@ produtoform.addEventListener('submit', (event) => {
 
     const produtoInserido = {
 
-=======
+
 produtoform.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -226,176 +209,4 @@ produtoform.addEventListener("submit", (event) => {
 
     exibirNotificacao("Produto adicionado com sucesso!","sucesso");
 
-    const produtoInserido = {
->>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
-        nome: nome.value,
-        categoria: categoria.value,
-        preco: preco.value,
-        quantidade: quantidade.value,
-        imagem: imagem.value
-
-    }
-    
-<<<<<<< HEAD
-=======
-
->>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
-    // const novoProduto = nome.value;
-
-    // const novaCategoria = categoria.value;
-
-    // categorias.push(novaCategoria);
-    // produtos.push(novoProduto);
-
-<<<<<<< HEAD
-    //pegando dos produtos que já foram salvos no localstorage
-    let produtosSalvos = JSON.parse(localStorage.getItem('nomeProduto')) || []
-   
-    //aguardando esses dados novos na lista
-    produtosSalvos.push(produtoInserido);
-
-    //guardando a lista no localstorage, transformando os dados para 
-    // json usando o JSON.stringify
-
-    localStorage.setItem('nomeProduto', JSON.stringify(produtosSalvos));     
-
-=======
-    produtos.push(produtoInserido);
-
-
-    localStorage.setItem("nomeProduto", JSON.stringify(produtos));
-    
->>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
-    // localStorage.setItem("nomeCategoria", categorias);
-
-    // localStorage.setItem("preco", preco.value);
-
-    // localStorage.setItem("quantidade", quantidade.value);
-
-    // nomes = ["Giovanne", "Débora", "Raimundo"];
-
-    // localStorage.setItem("nome", nomes); //Adiciona um item no localStorage
-
-    // // localStorage.removeItem("nome2"); para excluir um item do localStorage
-    
-    // const verNomes = localStorage.getItem("nome"); // Ver o que está armazenado no localStorage
-
-    // alert(verNomes);
-
-<<<<<<< HEAD
-    //limpando os campos do formulário
-    produtoform.reset();
-
-    adicionarItemTabela();
-=======
->>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
-   
 });
-
-
-<<<<<<< HEAD
-function adicionarItemTabela() {
-
-    const semProdutosDiv = document.getElementById('sem-produtos');
-
-    let produtos = JSON.parse(localStorage.getItem('nomeProduto')) || [];
-    
-    let valoresTabela = '';
-
-    if (produtos.length > 0) {
-
-        semProdutosDiv.style.display = 'none';
-        
-    }
-   
-    produtos.forEach(produto => {
-        console.log(produto);
-        valoresTabela += `
-            <tr>
-                <td></td>
-                <td>${produto.nome}</td>
-                <td>${produto.categoria}</td>
-                <td>${produto.preco}</td>
-                <td>${produto.quantidade}</td> 
-            </tr>
-            `;
-
-    });
-     
-
-    tbody.innerHTML = valoresTabela
-    
-};
-
-adicionarItemTabela();
-
-
-=======
-
-
-=======
-/*********Linkando Variáveis do HTML no JS via ID*********/
-
-const nome = document.getElementById("nome");
-const categoria = document.getElementById("categoria");
-const preco = document.getElementById("preco");
-const quantidade = document.getElementById("quantidade");
-const imagem = document.getElementById("imagem");
-
-
-/*********Linkando uma variével a div do HTML que guarda o Formulário*********/
-
-/*********Caminho para adicionar um evento*********/
-
-const produtoform = document.getElementById("produto-form");
-
-
-/*********Criando uma função*********/
-
-// function testeEnvio(){
-//     console.log("Enviando Formulário");
-// }
-
-
-/*********Criando um evento*********/
-
-// produtoform.addEventListener("submit", testeEnvio()); /*addEventListener() cria um ouvinte de eventos, o parametro é passado dentro dos parenteses ("");*/
-
-/*a função é passada dentro do parâmetro do addEventListener()*/
-
-
-/*********Criando evento de envio via arrowfunction*********/
-
-produtoform.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if(nome.value == ''){
-        document.getElementById("erro-nome").style.display = 'block';        
-    }
-    else{
-        document.getElementById("erro-nome").style.display = 'none';
-    }
-    if(categoria.value == ''){
-        document.getElementById("erro-categoria").style.display = 'block';
-    }
-    else{
-        document.getElementById('erro-categoria').style.display = 'none';
-    }
-    if(preco.value == '') {
-        document.getElementById('erro-preco').style.display = 'block';
-    }
-    else{
-        document.getElementById('erro-preco').style.display = 'none';
-    }
-    if(quantidade.value == ''){
-        document.getElementById('erro-quantidade').style.display = 'block';
-    }
-    else{
-        document.getElementById('erro-quantidade').style.display = 'none';
-    }
-});
-
-
-
-
->>>>>>> 127fb22a599af7bc5a3d974d8ef9b10ccaa29503
->>>>>>> 986157e98f711c7815b6f4c490a42d34593fa141
